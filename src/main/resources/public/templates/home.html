@@ -1,0 +1,65 @@
+<button class="btn btn-primary add" ng-click="showAddService()">Add</button>
+<div class="panel panel-default" ng-show="showAddServiceDialog">
+    <div class="panel-heading">Add New Service
+        <div>
+            <!--<button class="btn btn-default" ng-click="addService()">Save</button>-->
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <!--<tr>
+                <td>Service Name :<input type="text" required ng-model="serviceName"/></td>
+                <td>Service Context: <input type="text" required ng-model="serviceContext"/></td>
+                <td></td>
+            </tr>-->
+            <tr>
+                <td colspan="3">
+                   <textarea class="text-area" ng-model="serviceBody" ng-maxlength="10000" style="width:100%;height: 200px"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-default" ng-click="addService()">Save</button>
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+
+        </table>
+        <!--Service Name :<input type="text" required ng-model="serviceName"/>
+        Service Context: <input type="text" required ng-model="serviceContext"/>
+        --><!--<button class="btn btn-default" ng-click="addService()">Save</button>
+        <textarea ng-model="serviceBody"></textarea>-->
+    </div>
+</div>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-primary" ng-repeat="service in applicationData">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a href="#!service" ng-click="setServiceData(service)">
+                    {{service.name}}</a>
+                <!--<a data-toggle="collapse" data-parent="#accordion" href="#service-{{service.context}}">-->
+                    <!--{{service.name}}</a>-->
+            </h2>
+        </div>
+        <div id="{{service.context}}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <td>App Id  </td><td style="padding-left: 10px;">{{service.applicationId}}</td>
+
+                    </tr>
+                    <tr><td>Name  </td><td style="padding-left: 10px;">{{service.name}}</td></tr>
+                    <tr><td>Context  </td><td style="padding-left: 10px;">{{service.context}}</td></tr>
+                    <tr><td>Host Name  </td><td style="padding-left: 10px;">{{service.hostName}}</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

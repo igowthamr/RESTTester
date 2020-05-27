@@ -1,0 +1,30 @@
+<div class="panel-heading">
+    <h4 class="panel-title action">
+        <label data-toggle="collapse" data-target="#criteria-{{testCase.testId}}">Criteria</label>
+        <button class="btn btn-primary add" ng-click="showAddCriteria()">Add</button>
+    </h4>
+</div>
+<div id="criteria-{{testCase.testId}}" class="panel-collapse collapse in">
+    <div class="panel-body">
+        <table class="table" >
+               <tr ng-repeat="criteria in testCase.criterias">
+                   <td>{{criteria.criteriaId}}</td>
+                   <td>{{criteria.type}}</td>
+                   <td>{{criteria.name}}</td>
+                   <td>{{criteria.operation}}</td>
+                   <td>{{criteria.expected}}</td>
+               </tr>
+        </table>
+        <div class="panel panel-default" ng-show="showAddCriteriaDialog">
+            <div class="panel-heading">Add New Criteria</div>
+            <div class="panel-body criteria-body">
+                <label class="title">Response Type :</label>
+                <select ng-model="selectedType" ng-options="type for type in types"></select>
+                <div ng-show="selectedType=='RESPONSE_HEADER'"> <input type="text" required /> </div>
+                <div ng-show="selectedType=='RESPONSE_STATUS'"> <input type="text" required /> <input type="text" required /> </div>
+                <div ng-show="selectedType=='RESPONSE_BODY'"> <textarea></textarea></div>
+                <button class="btn btn-default" ng-click="addCriteria()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="panel-heading">
+    <h4 class="panel-title action">
+        <label data-toggle="collapse" data-parent="#testaccordion" data-target="#test-{{testCase.testId}}">Test Case</label>
+        <div>
+            <button class="btn btn-primary add">Add</button>
+            <button class="btn btn-primary" ng-click="run()">Run</button>
+        </div>
+    </h4>
+</div>
+<div id="test-{{testCase.testId}}" class="panel-collapse collapse in">
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <td>StatusCode</td>
+                <td><b>{{testCase.request.statusCode || "200"}}</b></td>
+                <td></td>
+             </tr>
+            <tr>
+               <td rowspan="2">Request</td>
+                <td>URI</td>
+                <td><i>{{testCase.request.uriPath}}</i></td>
+            </tr>
+            <tr>
+                <td>Method</td>
+                <td>{{testCase.request.method }}</td>
+            </tr>
+            <tr ng-repeat="header in testCase.request.headers">
+                 <td rowspan="{{testCase.request.headers.length}}" ng-hide="$index>0">Headers</td>
+                 <td>{{header.name}}</td>
+                 <td>{{header.value}}</td>
+            </tr>
+            <tr>
+                <td>Body</td>
+                <td colspan="2">{{testCase.request.body.value}}</td>
+            </tr>
+        </table>
+        <div class="panel-group">
+            <div class="panel panel-default" ng-include="'templates/criteria.html'" ng-controller="criteriaController"></div>
+        </div>
+    </div>
+</div>
